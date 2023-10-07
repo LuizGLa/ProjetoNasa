@@ -1,10 +1,11 @@
 // src/projects/entities/project.entity.ts
 
-import { Imagem, Tag } from "@prisma/client";
+import { ImagemEntity } from "src/modules/imagens/entities/imagem.entity";
+import { Tag } from "src/modules/tags/entities/tag.entity";
+
+
 
 export class Projeto  {
   id?: string;
   descricao: string;
-  // imagens?: Imagem[];
-  // tag?: Tag;
 }
