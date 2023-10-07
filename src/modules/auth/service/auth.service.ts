@@ -12,12 +12,11 @@ export class AuthService {
   async validateUser(login: string, senha: string): Promise<any> {
     const usuario = await this.usuarioService.buscaPorLogin(login);
     if (usuario) {
-      const { situacao } = usuario;
       const matched = await this.usuarioService.comparaSenha(
         senha,
         usuario.senha,
       );
-      if (matched && situacao === 'Ativo') {
+      if (matched === 'Ativo') {
         return usuario;
       } else {
         return null;
@@ -30,7 +29,6 @@ export class AuthService {
     const payload = {
       login: usuario.login,
       sub: usuario.id,
-      nivel: usuario.nivel,
     };
     const usuarioId = usuario.id;
 

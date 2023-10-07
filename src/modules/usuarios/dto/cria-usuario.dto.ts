@@ -20,16 +20,10 @@ export class CriaUsuarioDto {
   @IsNotEmpty({
     message: 'Informe o nível do Usuário',
   })
-  @IsString()
-  nivel: string;
-
   @ApiProperty()
   @IsNotEmpty({
     message: 'Informe a situação do Usuário',
   })
-  @IsString()
-  situacao: string;
-
   @ApiProperty()
   @IsNotEmpty({
     message: 'Informe o Login',
