@@ -1,40 +1,30 @@
-import { IsNotEmpty, IsString, IsEmail } from 'class-validator';
-import { ApiProperty } from '@nestjs/swagger';
+import { IsNotEmpty, IsString, IsEmail, IsOptional } from "class-validator";
 
 export class CriaUsuarioDto {
-  @ApiProperty()
   @IsNotEmpty({
-    message: 'Informe o Nome',
+    message: "Informe o Nome",
   })
   @IsString()
   nome: string;
 
-  @ApiProperty()
   @IsNotEmpty({
-    message: 'Informe o Email',
+    message: "Informe o Email",
   })
   @IsEmail()
   email: string;
 
-  @ApiProperty()
-  @IsNotEmpty({
-    message: 'Informe o nível do Usuário',
-  })
-  @ApiProperty()
-  @IsNotEmpty({
-    message: 'Informe a situação do Usuário',
-  })
-  @ApiProperty()
-  @IsNotEmpty({
-    message: 'Informe o Login',
-  })
   @IsString()
   login: string;
 
-  @ApiProperty()
   @IsNotEmpty({
-    message: 'Informe a Senha',
+    message: "Informe a Senha",
   })
   @IsString()
   senha: string;
+
+  @IsOptional()
+  perfil: any;
+
+  @IsOptional()
+  tags: any;
 }

@@ -11,12 +11,13 @@ datasource db {
 }
 
 model Usuario {
-  id       String  @id @default(uuid())
-  email    String  @unique
-  login    String  @unique
-  senha    String
-  perfil   Perfil? @relation(fields: [perfilId], references: [id])
-  perfilId String?
+  id    String @id @default(uuid())
+  email String @unique
+  login String @unique
+  senha String
+
+  perfil   Perfil @relation(fields: [perfilId], references: [id])
+  perfilId String
 
   @@map("usuarios") //Nome da tabela
 }
@@ -27,6 +28,15 @@ model Perfil {
   perfil_img String    @unique
   Usuario    Usuario[]
   tags       Tag[]
+  id     String  @id @default(uuid())
+  nome   String  @unique
+  imagem Imagem? @relation(fields: [imagemId], references: [id])
+
+  Tag Tag? @relation(fields: [tagId], references: [id])
+
+  tagId    String?
+  imagemId String?
+  Usuario  Usuario[]
 
   @@map("perfis") //Nome da tabela
 }
@@ -47,6 +57,7 @@ model Imagem {
 
   Projeto   Projeto? @relation(fields: [projetoId], references: [id])
   projetoId String?
+  Perfil    Perfil[]
 
   @@map("imagens") //Nome da tabela
 }
@@ -57,6 +68,7 @@ model Projeto {
 
   imagens Imagem[]
   Tag     Tag[]
+  tags    Tag[]
 
   @@map("projetos")
 }

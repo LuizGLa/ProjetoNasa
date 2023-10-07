@@ -1,4 +1,13 @@
-import { PartialType } from '@nestjs/swagger';
-import { CreateTagDto } from './create-tag.dto';
+import { IsOptional, IsString } from "class-validator";
 
-export class UpdateTagDto extends PartialType(CreateTagDto) {}
+export class UpdateTagDto {
+  @IsOptional()
+  @IsString()
+  nome: string;
+
+  @IsOptional()
+  perfil: any;
+
+  @IsOptional()
+  projetos: any;
+}
