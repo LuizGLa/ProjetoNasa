@@ -1,0 +1,63 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Usuario {
+  id       String  @id @default(uuid())
+  email    String  @unique
+  login    String  @unique
+  senha    String
+  perfil   Perfil? @relation(fields: [perfilId], references: [id])
+  perfilId String?
+
+  @@map("usuarios") //Nome da tabela
+}
+
+model Perfil {
+  id         String    @id @default(uuid())
+  nome       String    @unique
+  perfil_img String    @unique
+  Usuario    Usuario[]
+  Tag        Tag?      @relation(fields: [tagId], references: [id])
+  tagId      String?
+
+  @@map("perfis") //Nome da tabela
+}
+
+model Tag {
+  id   String @id @default(uuid())
+  nome String @unique
+
+  perfis   Perfil[]
+  projetos Projeto[]
+}
+
+model Imagem {
+  id   String  @id @default(uuid())
+  link String
+  capa Boolean
+
+  Projeto   Projeto? @relation(fields: [projetoId], references: [id])
+  projetoId String?
+
+  @@map("imagens") //Nome da tabela
+}
+
+model Projeto {
+  id        String @id @default(uuid())
+  descricao String
+
+  imagens Imagem[]
+  Tag     Tag?     @relation(fields: [tagId], references: [id])
+  tagId   String?
+
+  @@map("projetos")
+}
