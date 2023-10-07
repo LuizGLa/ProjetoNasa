@@ -20,18 +20,13 @@ export class ProjetoService {
     return projetos;
   }
 
-//   async findOne(id: number): Promise<Projeto> {
-//     const projeto = await this.prisma.projeto.findUnique({
-//       where: {
-//         id: id.toString()
-//       },
-//       include: {
-//         imagens: true,
-//         tag: true
-//       }
-//     });
-//     return projeto;
-//   }
+  async findOne(id: string) {
+    return await this.prisma.projeto.findFirst({
+      where: {
+        id
+      }
+    });
+  }
 
 //   async update(id: number, updateProjetoDto: UpdateProjetoDto): Promise<Projeto> {
 //     const { descricao, imagens, tag } = updateProjetoDto;
