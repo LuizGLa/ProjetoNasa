@@ -57,8 +57,7 @@ model Projeto {
   descricao String
 
   imagens Imagem[]
-  Tag     Tag?     @relation(fields: [tagId], references: [id])
-  tagId   String?
+  Tag     Tag[]
 
   @@map("projetos")
 }
