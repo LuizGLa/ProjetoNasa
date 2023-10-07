@@ -5,12 +5,15 @@ import { TagsModule } from './modules/tags/tags.module';
 import { PerfisModule } from './modules/perfis/perfis.module';
 import * as ConfigEnv from '@nestjs/config';
 import { ImagensModule } from './modules/imagens/imagens.module';
+import { ProjetoModule } from './projeto/projeto.module';
 
 @Module({
   imports: [
     ConfigEnv.ConfigModule.forRoot({ isGlobal: true, envFilePath: '.env' }),
     AuthModule,
     UsuarioModule,
+    ImagensModule,
+    ProjetoModule,
     TagsModule,
     PerfisModule,
   ],

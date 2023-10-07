@@ -7,7 +7,7 @@ import { ImagensService } from 'src/modules/imagens/service/imagens.service';
 import { TagsService } from 'src/modules/tags/tags.service';
 
 @Module({
-  imports: [ImagensService, TagsService],
+  imports: [],
   controllers: [ProjetoController],
   providers: [ProjetoService, PrismaService]
 })
