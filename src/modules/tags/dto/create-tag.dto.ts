@@ -1,6 +1,15 @@
-import { IsNotEmpty } from 'class-validator';
+import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
 export class CreateTagDto {
-  @IsNotEmpty()
+  @IsNotEmpty({
+    message: 'Informe o Nome',
+  })
+  @IsString()
   nome: string;
+
+  @IsOptional()
+  perfil: any;
+  
+  @IsOptional()
+  projetos: any;
 }
