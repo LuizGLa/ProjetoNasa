@@ -42,6 +42,7 @@ model Tag {
 
 model Imagem {
   id   String  @id @default(uuid())
+  nome String
   link String
   capa Boolean
 
